@@ -1,0 +1,90 @@
+print("------------------------------------------------------")
+print("Часть1 №1")
+x = int(input("сколько денег изначально в банке?"))
+p = int(input("сколько процентов накапливается за каждый год?"))
+y = int(input("какая денежная цель?"))
+i = 0
+if x < y:
+	while x < y:
+		x = x + x / 100 * p
+		x = x // 1
+		i += 1
+else:
+	print("мы уже достигли этой цели!")
+print(i, " лет - вот столько лет нам понадобилось!")
+print("------------------------------------------------------")
+print("Часть1 №3")
+number = 12345
+sum_kazjday = 0
+for i in str(num):
+    sum_kazjday += int(i)
+print("Сумма цифр числа -", number, "=", sum_kazjday)
+print("------------------------------------------------------")
+print("Часть 2 №1")
+l_list = ["1", 2, 3, "2", 4, "1", 5, 2]
+duplicat = []
+for i in l_list:
+    if l_list.count(i) > 1 and i not in duplicat:
+        duplicat.append(i)
+print("Повторяющиеся элементы в списке: ", duplicat)
+print("------------------------------------------------------")
+print("Часть 2 №3")
+f = {"qwer":"tyu", "asd":"fgh", "zxc":"vbn"}
+f = {i:j for j, i in f.items()}
+print(f)
+print("------------------------------------------------------")
+print("Часть 3 №1")
+def area(a,b,c):
+    S = a*b*c
+    return S
+a = int(input("сторона a: "))
+b = int(input("сторона b: "))
+c = int(input("сторона c: "))
+print("Ваша площадь треугольника: ", area(a,b,c))
+print("------------------------------------------------------")
+print(Часть 3 №3)
+w = [56,9,11,2]
+from functools import cmp_to_key
+w = [56, 9, 11, 2, 0]
+chislo = sorted(w, key = cmp_to_key(lambda i, j: -1 if str(j) + str(i) < str(i) + str(j) else 1))
+print(''.join(map(str,chislo)))
+print("------------------------------------------------------")
+print("Часть 4 №1 и №2")
+import json
+r = ''
+w = ''
+e = True
+loginiu = []
+def check_list(brack):
+    global r
+    r = 0
+    for i in brack:
+        if brack.count(i) > 1:
+            return 'Такой пользователь уже есть!'
+            r = 1
+        else:
+            r = 0
+            print('')
+            continue
+def register():
+    global r, loginiu
+    log = input("Ваш логин: ")
+    pasw = input("Ваш пароль: ")
+    seckret = [log, pasw]
+    loginiu.append(seckret)
+    print(check_list(loginiu))
+    if r == 0:
+        with open("zdec_reg.json","w", encoding = "utf-8") as f:
+            json.dump(seckret,f)
+open_file = input("Если вы хотите зарегистрироваться, то напишите 'регистрация': ")
+while e == True:
+    if open_file == 'регистрация':
+            register()
+            iny = input("Если хотите закончить, то напишите 'выход': ")
+            if iny == 'выход':
+                e = False
+            else:
+                print("Команда не правильная")
+    else:
+        print("команда не правильная.")
+print("------------------------------------------------------")
