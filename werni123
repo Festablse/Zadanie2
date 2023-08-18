@@ -5,24 +5,22 @@ def binary_search(list_num , to_search):
     size = len(list_num)
     last_index = size - 1
     mid_index = (first_index + last_index) // 2
-    # print(mid_index)
     mid_element = list_num[mid_index]
-    # print(mid_element)
     is_found = True
     while is_found:
         if first_index == last_index:
             if mid_element != to_search:
                 is_found = False
-                return " Does not appear in the list"
+                return "Не отображается в списке"
         elif mid_element == to_search:
-            return f"{mid_element} occurs in position {mid_index}"
+            return f"{mid_element} происходит в положении {mid_index}"
         elif mid_element > to_search:
             new_position = mid_index - 1
             last_index = new_position
             mid_index = (first_index + last_index) // 2
             mid_element = list_num[mid_index]
             if mid_element == to_search:
-                return f"{mid_element} occurs in position {mid_index}"
+                return f"{mid_element} происходит в положении {mid_index}"
         elif mid_element < to_search:
             new_position = mid_index + 1
             first_index = new_position
@@ -30,8 +28,22 @@ def binary_search(list_num , to_search):
             mid_index = (first_index + last_index) // 2
             mid_element = list_num[mid_index]
             if mid_element == to_search:
-                return f"{mid_element} occurs in position {mid_index}"
+                return f"{mid_element} происходит в положении {mid_index}"
 list_container = [16 , 18 , 20 , 50 , 60 , 81 , 84 , 89]
 print(binary_search(list_container , 81))
 print(binary_search(list_container , 10))
+print("------------------------------------------------------")
+print("Часть4 №2")
+def sort_vstavkami(a4):
+    for i in range(1, len(a4)):
+        mesto = a4[i]
+        j = i - 1
+        while (j >= 0 and mesto < a4[j]):
+            a4[j + 1] = a4[j]
+            j = j - 1
+        a4[j + 1] = mesto
+a4 = input('Введите список чисел через пробел: ').split()
+a4 = [int(k) for k in a4]
+sort_vstavkami(a4)
+print('Отсортированный список: ', a4)
 print("------------------------------------------------------")
