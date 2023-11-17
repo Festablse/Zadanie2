@@ -1,49 +1,47 @@
 print("------------------------------------------------------")
-print("Часть4 №1")
-def binary_search(list_num , to_search):
-    first_index = 0
-    size = len(list_num)
-    last_index = size - 1
-    mid_index = (first_index + last_index) // 2
-    mid_element = list_num[mid_index]
-    is_found = True
-    while is_found:
-        if first_index == last_index:
-            if mid_element != to_search:
-                is_found = False
-                return "Не отображается в списке"
-        elif mid_element == to_search:
-            return f"{mid_element} происходит в положении {mid_index}"
+print("Часть7 №1")
+import bs4
+import requests
+import matplotlib.pyplot as plt
+response = requests.get("http://mfd.ru/currency/?currency=USD")
+stranica_text = response.text
+soup = bs4.BeautifulSoup(response.text, "lxml")
+table_kurs_usd = soup.find_all("table", {"class": "mfd-table mfd-currency-table"})
+table = [usd.text for usd in table_kurs_usd]
+table = table[0].split("\n")
+table = [i for i in table if i != ""]
         elif mid_element > to_search:
-            new_position = mid_index - 1
-            last_index = new_position
-            mid_index = (first_index + last_index) // 2
-            mid_element = list_num[mid_index]
-            if mid_element == to_search:
-                return f"{mid_element} происходит в положении {mid_index}"
-        elif mid_element < to_search:
-            new_position = mid_index + 1
-            first_index = new_position
-            last_index = size - 1
-            mid_index = (first_index + last_index) // 2
-            mid_element = list_num[mid_index]
-            if mid_element == to_search:
-                return f"{mid_element} происходит в положении {mid_index}"
-list_container = [16 , 18 , 20 , 50 , 60 , 81 , 84 , 89]
-print(binary_search(list_container , 81))
-print(binary_search(list_container , 10))
+            new_positcion = id_index - 1
+            last_index = new_posicion
+usd_table_dict = {}
+for data in range(3, len(table), 3):
+    usd_table_dict[table[data]] = table[data + 1]
+print(usd_table_dict)
+dates = [i for i in reversed(usd_table_dict)]
+znach_usd = [usd_table_dict[i] for i in dates]
+for i in range(len(znach_usd)):
+    znach_usd[i] = float(znach_usd[i].replace(",", "."))
+plt.plot(dates, znach_usd)
+plt.show()
 print("------------------------------------------------------")
-print("Часть4 №2")
-def sort_vstavkami(a4):
-    for i in range(1, len(a4)):
-        mesto = a4[i]
-        j = i - 1
-        while (j >= 0 and mesto < a4[j]):
-            a4[j + 1] = a4[j]
-            j = j - 1
-        a4[j + 1] = mesto
-a4 = input('Введите список чисел через пробел: ').split()
-a4 = [int(k) for k in a4]
-sort_vstavkami(a4)
-print('Отсортированный список: ', a4)
+
+
+print("Часть7 №2")
+import bs4
+import requests
+import matplotlib.pyplot as plt
+response = requests.get("https://yandex.ru/news/quotes/1.html")
+stranica_text = response.text
+soup = bs4.BeautifulSoup(response.text, "lxml")
+table_kurs_usd = soup.find_all("div", {"class": "news-stock-table__cell"})
+table = [usd.text for usd in table_kurs_usd]
+usd_table_dict = {}
+for data in range(3, len(table), 3):
+    usd_table_dict[table[data]] = table[data + 1]
+dates = [i for i in reversed(usd_table_dict)]
+znach_usd = [usd_table_dict[i] for i in dates]
+for i in range(len(znach_usd)):
+    znach_usd[i] = float(znach_usd[i].replace(",", "."))
+plt.plot(dates, znach_usd)
+plt.show()
 print("------------------------------------------------------")
