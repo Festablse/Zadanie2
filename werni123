@@ -24,8 +24,6 @@ for i in range(len(znach_usd)):
 plt.plot(dates, znach_usd)
 plt.show()
 print("------------------------------------------------------")
-
-
 print("Часть7 №2")
 import bs4
 import requests
