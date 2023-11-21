@@ -11,7 +11,7 @@ table = [usd.text for usd in table_kurs_usd]
 table = table[0].split("\n")
 table = [i for i in table if i != ""]
         elif mid_element > to_search:
-            new_positcion = id_index - 1
+            new_posicion = id_index - 1
             last_index = new_posicion
 usd_table_dict = {}
 for data in range(3, len(table), 3):
